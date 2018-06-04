@@ -1,0 +1,111 @@
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+}
+.container-fluid{
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+div{
+    overflow: visible;
+}
+#login-window{
+    margin-top: 96px;
+}
+h3{
+    width: 256px;
+    height: 90px;
+    font-size: 64px;
+    font-weight: 300;
+    font-stretch: normal;
+    line-height: 90px;
+    color: #9b9b9b;
+    margin-bottom: 0;
+}
+p{
+    width: 48px;
+    height: 33px;
+    font-weight: 300;
+    font-size: 24px;
+    font-stretch: normal;
+    line-height: 33px;
+    color: #157354;
+}
+.login-wrap {
+    width: 330px;
+    height: 360px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    border-top: 8px solid #ea542d;
+}
+form{
+    margin-top: 88px;
+}
+input{
+    width: 100%;
+    height: 56px;
+    background-color: #e6e6e6;
+    padding: 0 10px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+#submit{
+    width: 293px;
+    height: 56px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #f7724f;
+    border-radius: 4px;
+}
+#tri-circle{
+    height: 100%;
+    position: relative;
+    /* 保证重叠时候form在最上面 */
+    z-index: -1;    
+    /* overflow: hidden; */
+}
+#tri-circle div{
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    border-radius: 50%;
+}
+#cir-top{
+    z-index: 3;
+    top: -520px;
+    right: -200px;
+    background-color: rgba(20,224,164,0.83);
+}
+#cir-right{
+    z-index: 2;
+    top: -100px;
+    right: -270px;
+    background-color: rgba(27,158,116,0.83);
+}
+#cir-bottom{
+    z-index: 1;
+    top: 553px;
+    right: -200px;
+    background-color: rgba(21,114,84,0.83);
+}
+/*@media screen and (min-width: 1170px) and (max-width: 1400px){*/
+    /*#cir-top{right: -370px;}*/
+    /*#cir-right{right: -445px;}*/
+    /*#cir-bottom{right: -340px;}*/
+/*}*/
+/*@media screen and (max-width: 1169px){*/
+    /*#login-window{margin-top: 60px;}*/
+    /*h3{font-size: 55px;}*/
+    /*.login-wrap{width: auto;}*/
+    /*#submit{width: 100%;}*/
+    /*#tri-circle{height: 770px;}*/
+    /*#cir-top{right: -445px;top: -570px;}*/
+    /*#cir-right{right: -555px;}*/
+    /*#cir-bottom{right: -419px;top: 475px;}*/
+/*}*/

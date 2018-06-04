@@ -1,0 +1,229 @@
+/*通用样式*/
+div{overflow: hidden;}
+a{color: #fff;display: inline-block;}
+a:hover{color: #fff;text-decoration: none;cursor: pointer;}
+input{border: none;outline: none;}
+/*head*/
+#head{
+    height: 60px;
+    background-color: #1b9e74;
+    box-shadow: 0 2px 4px 0
+    rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 4;
+}
+
+/*个人信息 & 状态列表 & 头像 标题*/
+.individual,.statusList{
+    height: 60px;
+    line-height: 60px;
+    font-family: Microsoft YaHei;
+    font-size: 20px;
+    color: #fff;
+    position: relative;
+    overflow: visible;
+}
+.individual span{
+    font-size: smaller;
+}
+.statusList span{
+    position: absolute;
+    left: 30px;
+}
+
+/*个人中心按钮*/
+#indvCenter{
+    position: absolute;
+    right: 30px;
+}
+
+/*两侧伸缩按钮*/
+#stretchBtnL{
+    width: 25px;
+    height: 20px;
+    position: absolute;
+    right: -8px;
+    top: 20px;
+}
+#stretchBtnR{
+    width: 25px;
+    height: 20px;
+    position: absolute;
+    left: -8px;
+    top: 20px;
+}
+.trans{
+    transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+}
+#statusList span{
+    position: absolute;
+    left: 30px;
+}
+
+/*LOGO & 大标题*/
+h1{
+    text-align: center;
+    font-family: Microsoft YaHei;
+    font-size: 24px;
+    color: #fff;
+}
+
+/*cont*/
+#cont{
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+}
+
+/*好友列表*/
+.friendList{
+    min-width: 180px;
+    background-color: #21b686;
+    padding-bottom: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    border-radius: 4px;
+}
+.myId{
+    height: 186px;
+    text-align: center;
+    box-shadow: 0 17px 14px -16px rgba(0, 0, 0, 0.53);
+    /*border-bottom: 3px solid #157353;*/
+}
+.myId img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: solid 3px #fff;
+    margin-top: 35px;
+}
+.myId p{
+    font-family: Microsoft YaHei;
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #fff;
+    margin-top: 25px;
+}
+.friendList .title{
+    height: 78px;
+    line-height: 78px;
+    font-size: 20px;
+    color: #fff;
+    position: relative;
+}
+.friendList .title img{
+    position: absolute;
+    right: 0;
+    top: 23px;
+}
+
+/*好友 和 正在视频用户user*/
+.list{
+    overflow: visible;
+}
+.user{
+    height: 77px;
+    line-height: 77px;
+    font-size: 18px;
+    border-radius: 4px;
+    color: #444;
+    background-color: #fff;
+    margin-bottom: 10px;
+    overflow: visible;
+    position: relative;
+}
+.friendList .user{cursor: pointer;}
+.user img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 6%;
+}
+
+/*被选择者上方的红点*/
+.redDot{
+    /*width: 16px;*/
+    /*height: 16px;*/
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: #ea542d;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+}
+
+/*状态列表*/
+.chattingList{
+    min-width: 180px;
+    background-color: #21b686;
+    padding-bottom: 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+    border-radius: 4px;
+}
+.chattingList .user{
+    height: 112px;
+    margin-top: 10px;
+    position: relative;
+}
+
+/*正在视频用户的功能按钮*/
+.user a{
+    display: block;
+    width: 35px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 22px;
+    position: absolute;
+    bottom: 15px;
+    color: #28e0a4;
+}
+.audible{
+    left: 30%;
+}
+.visible{
+    left: 55%;
+}
+
+@media screen and (max-width: 992px){
+    /*顶部头像消失*/
+    div{
+        overflow: visible;
+    }
+    .individual span{
+        display: none;
+    }
+    /*页面字号、部分图标变小*/
+    .individual, .statusList, .myId p, .friendList .title, .user{
+        font-size: 16px;
+    }
+    .friendList{
+        position: absolute;
+    }
+    .friendList .title img{
+        width: 25px;
+        height: 25px;
+        top: 26px;
+    }
+    .chattingList{
+        height: auto;
+        padding-bottom: 65px;
+    }
+}
+@media screen and (max-width: 586px){
+    .logo{
+        font-size: 18px;
+    }
+    .individual, .statusList, .myId p, .friendList .title, .user{
+        font-size: 14px;
+    }
+}

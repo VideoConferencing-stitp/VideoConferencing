@@ -1,0 +1,99 @@
+
+/*会议室*/
+#chamber{
+    width: 960px;
+    height: 800px;
+    margin: 60px auto 30px;
+}
+/*参与会话者*/
+.participant{
+    float: left;
+    width: 230px;
+    height: 230px;
+    font-size: 20px;
+    background-color: #d7d7d7;
+    border-radius: 4px;
+    margin: 0 10px 10px 0;
+    position: relative;
+}
+.participant span{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #27dfa4;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 120px;
+}
+.volume{
+    left: -50px;
+}
+.eye{
+    right: -50px;
+}
+.participant a{
+    display: block;
+    width: 140px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #444;
+    background-color: #fff;
+    border-radius: 25px;
+    position: absolute;
+    top: -50px;
+    left: 45px;
+}
+/*突出者*/
+.main{
+    width: 470px;
+    height: 470px;
+}
+.main a{
+    left: 165px;
+}
+.main span{
+    top: 240px;
+}
+.participant a, .participant span{
+    display: none;
+    cursor: pointer;
+}
+.participant:hover{
+    background-color: #747474;
+}
+
+/*底部功能条*/
+#bottomBar{
+    height: 65px;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto 10px;
+}
+#cancelTalking{
+    display: inline-block;
+    width: 160px;
+    height: 60px;
+    color: #fff;
+    background-color: #ea542c;
+    border-radius: 30px;
+    outline: auto;
+    border: none;
+    vertical-align: top;
+}
+#bottomBar span{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: #27dfa4;
+    border: solid 3px #969696;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 20px;
+}

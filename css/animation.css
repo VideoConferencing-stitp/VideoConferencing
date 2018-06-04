@@ -1,0 +1,172 @@
+/* 两侧箭头按钮 move */
+
+@keyframes moveL{
+    from{left: 0;}
+    to {left: -10px;}
+}
+@-moz-keyframes moveL{
+    from{left: 0;}
+    to {left: -10px;}
+}
+@-webkit-keyframes moveL{
+    from{left: 0;}
+    to {left: -10px;}
+}
+@-o-keyframes moveL{
+    from{left: 0;}
+    to {left: -10px;}
+}
+.move-l{
+    animation: moveL .5s 1 forwards;
+    -moz-animation: moveL .5s 1 forwards;
+    -webkit-animation: moveL .5s 1 forwards;
+    -o-animation: moveL .5s 1 forwards;
+}
+@keyframes moveR{
+    from{left: -10px;}
+    to {left: 0;}
+}
+@-moz-keyframes moveR{
+    from{left: -10px;}
+    to {left: 0;}
+}
+@-webkit-keyframes moveR{
+    from{left: -10px;}
+    to {left: 0;}
+}
+@-o-keyframes moveR{
+    from{left: -10px;}
+    to {left: 0;}
+}
+.move-r{
+    animation: moveR .5s 1 forwards;
+    -moz-animation: moveR .5s 1 forwards;
+    -webkit-animation: moveR .5s 1 forwards;
+    -o-animation: moveR .5s 1 forwards;
+}
+
+/* 好友列表 fade-in */
+
+@keyframes fadeInL{
+    from{opacity: 0;left: -100px;}
+    to {opacity: 1;left: 0;}
+}
+@-moz-keyframes fadeInL{
+    from{opacity: 0;left: -100px;}
+    to {opacity: 1;left: 0;}
+}
+@-webkit-keyframes fadeInL{
+    from{opacity: 0;left: -100px;}
+    to {opacity: 1;left: 0;}
+}
+@-o-keyframes fadeInL{
+    from{opacity: 0;left: -100px;}
+    to {opacity: 1;left: 0;}
+}
+.fade-in-l{
+    animation: fadeInL .5s 1 forwards;
+    -moz-animation: fadeInL .5s 1 forwards;
+    -webkit-animation: fadeInL .5s 1 forwards;
+    -o-animation: fadeInL .5s 1 forwards;
+}
+
+/* 好友列表 fade-out */
+
+@keyframes fadeOutL{
+    from{opacity: 1;left: 0;}
+    to {opacity: 0;left: -100px;}
+}
+@-moz-keyframes fadeOutL{
+    from{opacity: 1;left: 0;}
+    to {opacity: 0;left: -100px;}
+}
+@-webkit-keyframes fadeOutL{
+    from{opacity: 1;left: 0;}
+    to {opacity: 0;left: -100px;}
+}
+@-o-keyframes fadeOutL{
+    from{opacity: 1;left: 0;}
+    to {opacity: 0;left: -100px;}
+}
+.fade-out-l{
+    animation: fadeOutL .5s 1 forwards;
+    -moz-animation: fadeOutL .5s 1 forwards;
+    -webkit-animation: fadeOutL .5s 1 forwards;
+    -o-animation: fadeOutL .5s 1 forwards;
+}
+
+
+/* 状态列表 fade-in */
+
+@keyframes fadeInR{
+    from{opacity: 0;right: -100px;}
+    to {opacity: 1;right: 0;}
+}
+@-moz-keyframes fadeInR{
+    from{opacity: 0;right: -100px;}
+    to {opacity: 1;right: 0;}
+}
+@-webkit-keyframes fadeInR{
+    from{opacity: 0;right: -100px;}
+    to {opacity: 1;right: 0;}
+}
+@-o-keyframes fadeInR{
+    from{opacity: 0;right: -100px;}
+    to {opacity: 1;right: 0;}
+}
+.fade-in-r{
+    animation: fadeInR .5s 1 forwards;
+    -moz-animation: fadeInR .5s 1 forwards;
+    -webkit-animation: fadeInR .5s 1 forwards;
+    -o-animation: fadeInR .5s 1 forwards;
+}
+
+/* 状态列表 fade-out */
+
+@keyframes fadeOutR{
+    from{opacity: 1;right: 0;}
+    to {opacity: 0;right: -100px;}
+}
+@-moz-keyframes fadeOutR{
+    from{opacity: 1;right: 0;}
+    to {opacity: 0;right: -100px;}
+}
+@-webkit-keyframes fadeOutR{
+    from{opacity: 1;right: 0;}
+    to {opacity: 0;right: -100px;}
+}
+@-o-keyframes fadeOutR{
+    from{opacity: 1;right: 0;}
+    to {opacity: 0;right: -100px;}
+}
+.fade-out-r{
+    animation: fadeOutR .5s 1 forwards;
+    -moz-animation: fadeOutR .5s 1 forwards;
+    -webkit-animation: fadeOutR .5s 1 forwards;
+    -o-animation: fadeOutR .5s 1 forwards;
+}
+
+/*被选用户的红点标识*/
+
+@keyframes redDot{
+    from{width: 0;height: 0;}
+    to{width: 16px;height: 16px;}
+}
+@-moz-keyframes redDot{
+    from{width: 0;height: 0;}
+    to{width: 16px;height: 16px;}
+}
+@-webkit-keyframes redDot{
+    from{width: 0;height: 0;}
+    to{width: 16px;height: 16px;}
+}
+@-o-keyframes redDot{
+    from{width: 0;height: 0;}
+    to{width: 16px;height: 16px;}
+}
+.selected{
+    animation: redDot .3s 1 forwards;
+    -moz-animation: redDot .3s 1 forwards;
+    -webkit-animation: redDot .3s 1 forwards;
+    -o-animation: redDot .3s 1 forwards;
+}

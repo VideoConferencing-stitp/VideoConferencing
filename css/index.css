@@ -1,0 +1,78 @@
+/*主窗口*/
+.main{
+    text-align: center;
+}
+.main button{
+    width: 160px;
+    height: 60px;
+    font-size: 20px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    color: #fff;
+}
+#invite{
+    background-color: #157353;
+    margin-top: 300px;
+}
+#cancel{
+    background-color: #ea532c;
+    margin-top: 30px;
+}
+
+/*popup*/
+#popup{
+    width: 380px;
+    height: 280px;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 31px 15px
+    rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    position: fixed;
+    top: -100%;
+    left: 40%;
+    z-index: 10;
+}
+h3{
+    width: 340px;
+    height: 65px;
+    line-height: 65px;
+    font-size: 22px;
+    font-family: Microsoft YaHei;
+    color: #444;
+    border-bottom: 1px solid #b9b9b9;
+    margin: 0 auto;
+}
+p{
+    width: 220px;
+    height: 56px;
+    font-family: Microsoft YaHei;
+    font-size: 20px;
+    line-height: 28px;
+    color: #444;
+    margin: 21px auto 25px;
+}
+#popup div{
+    width: 80px;
+    float: left;
+}
+.btn1{
+    margin: 0 35px 0 90px;
+}
+.btn1 button, .btn2 button{
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 50%;
+}
+.btn1 span, .btn2 span{
+    display: block;
+    font-size: 24px;
+}
+b{
+    display: block;
+    font-size: 18px;
+    color: #bababa;
+    margin-top: 5px;
+}
