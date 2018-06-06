@@ -5,6 +5,10 @@
     height: 800px;
     margin: 60px auto 30px;
 }
+#chamber video{
+    width: 100%;
+    height: 100%;
+}
 /*参与会话者*/
 .participant{
     float: left;
@@ -74,7 +78,7 @@
     text-align: center;
     margin: 0 auto 10px;
 }
-#cancelTalking{
+#hang-up{
     display: inline-block;
     width: 160px;
     height: 60px;
