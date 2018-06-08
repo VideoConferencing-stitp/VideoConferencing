@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录与会话界面</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/vue.js"></script>
+    <script src="js/userData.js"></script>
+</head>
+<body>
+<!-- 登录界面 -->
+<div id="login-page">
+    <div class="container-fluid">
+
+        <!--登录主界面-->
+        <div id="login-window" class="col-xs-5">
+            <div class="col-xs-8 col-xs-offset-3 col-lg-offset-4">
+                <h3>视频通话</h3>
+                <p>登录</p>
+            </div>
+            <div class="col-xs-8 col-xs-offset-3 col-lg-offset-4 login-wrap">
+                <div class="form">
+                    <form action="#" method="post">
+                        <input type="text" name="username" placeholder="账户名" id="username">
+                        <input type="password" name="password" placeholder="密码" id="password">
+                        <input type="submit" value="登录" id="login">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--三个圆-->
+        <div id="tri-circle" class="col-xs-7">
+            <div id="cir-top"></div>
+            <div id="cir-right"></div>
+            <div id="cir-bottom"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 会话界面 -->
+<div id="call-page" style="display:none;">
+    <!-- 顶部 -->
+    <div id="head" class="container-fluid">
+        <div class="row">
+
+            <!-- 个人中心 -->
+            <div class="individual col-xs-2 move-r">
+                <span>欢迎</span>
+                <a id="indvCenter">个人中心</a>
+                <a onclick="slideLeft()">
+                    <img id="stretchBtnL" src="images/icon/arrowl.svg" alt="缩放" data-start="true">
+                </a>
+            </div>
+            <!-- LOGO & 大标题 -->
+            <div class="logo col-xs-8">
+                <h1>LOGO + WebVideoChat</h1>
+            </div>
+            <!-- 状态列表 -->
+            <div class="statusList col-xs-2 move-r">
+                <a onclick="slideRight()">
+                    <img id="stretchBtnR" src="images/icon/arrowl.svg" alt="缩放">
+                </a>
+                <span>状态列表</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 主体 -->
+    <div id="cont" class="container-fluid">
+        <div class="row">
+
+            <!-- 好友列表 -->
+            <div class="friendList col-md-2 fade-in-l">
+                <!-- 个人ID -->
+                <div class="myId">
+                    <img :src="headImageUrl" :alt="name">
+                    <p>ID: {{ name }}</p>
+                </div>
+                <!-- 列表 -->
+                <div class="title">
+                    <span>好友列表</span>
+                    <a><img src="images/add.png" alt="添加"></a>
+                </div>
+                <div class="list">
+                    <div class="user friend" data-selected="false" onclick="choose()">
+                        <img :src="user0002.headImageUrl" alt="头像">
+                        <span>{{ user0002.name }}</span>
+                        <div class="redDot"></div>
+                    </div>
+                    <div class="user friend" data-selected="false">
+                        <img :src="user0002.headImageUrl" alt="头像">
+                        <span>{{ user0003.name }}</span>
+                        <div class="redDot"></div>
+                    </div>
+                    <div class="user friend" data-selected="false">
+                        <img :src="user0002.headImageUrl" alt="头像">
+                        <span>{{ user0004.name }}</span>
+                        <div class="redDot"></div>
+                    </div>
+                    <div class="user friend" data-selected="false">
+                        <img :src="user0002.headImageUrl" alt="头像">
+                        <span>{{ user0005.name }}</span>
+                        <div class="redDot"></div>
+                    </div>
+                    <div class="user friend" data-selected="false">
+                        <img :src="user0002.headImageUrl" alt="头像">
+                        <span>{{ user0006.name }}</span>
+                        <div class="redDot"></div>
+                    </div>
+                    <div class="user friend" data-selected="false">
+                        <img :src="user0002.headImageUrl" alt="头像">
+                        <span>{{ user0007.name }}</span>
+                        <div class="redDot"></div>
+                    </div>
+                    <div class="user friend" data-selected="false">
+                        <img :src="user0002.headImageUrl" alt="头像">
+                        <span>{{ user0008.name }}</span>
+                        <div class="redDot"></div>
+                    </div>
+                    <div class="user friend" data-selected="false">
+                        <img :src="user0002.headImageUrl" alt="头像">
+                        <span>{{ user0009.name }}</span>
+                        <div class="redDot"></div>
+                    </div>
+                    <div class="user friend" data-selected="false">
+                        <img :src="user0002.headImageUrl" alt="头像">
+                        <span>{{ user0010.name }}</span>
+                        <div class="redDot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 会话主窗口 -->
+            <div id="chamber">
+                <div class="participant main">
+                    <video id="windows0" autoplay></video>
+                    <a type="button" class="un-highlight">取消主讲人</a>
+                    <span class="glyphicon glyphicon-volume-up volume"></span>
+                    <span class="glyphicon glyphicon-eye-open eye"></span>
+                </div>
+                <div class="participant">
+                    <a type="button" class="highlight">设为主讲人</a>
+                    <span class="glyphicon glyphicon-volume-up volume"></span>
+                    <span class="glyphicon glyphicon-eye-open eye"></span>
+                </div>
+                <div class="participant">
+                    <a type="button" class="highlight">设为主讲人</a>
+                    <span class="glyphicon glyphicon-volume-up volume"></span>
+                    <span class="glyphicon glyphicon-eye-open eye"></span>
+                </div>
+                <div class="participant">
+                    <a type="button" class="highlight">设为主讲人</a>
+                    <span class="glyphicon glyphicon-volume-up volume"></span>
+                    <span class="glyphicon glyphicon-eye-open eye"></span>
+                </div>
+                <div class="participant">
+                    <a type="button" class="highlight">设为主讲人</a>
+                    <span class="glyphicon glyphicon-volume-up volume"></span>
+                    <span class="glyphicon glyphicon-eye-open eye"></span>
+                </div>
+                <div class="participant">
+                    <a type="button" class="highlight">设为主讲人</a>
+                    <span class="glyphicon glyphicon-volume-up volume"></span>
+                    <span class="glyphicon glyphicon-eye-open eye"></span>
+                </div>
+                <div class="participant">
+                    <a type="button" class="highlight">设为主讲人</a>
+                    <span class="glyphicon glyphicon-volume-up volume"></span>
+                    <span class="glyphicon glyphicon-eye-open eye"></span>
+                </div>
+                <div class="participant">
+                    <a type="button" class="highlight">设为主讲人</a>
+                    <span class="glyphicon glyphicon-volume-up volume"></span>
+                    <span class="glyphicon glyphicon-eye-open eye"></span>
+                </div>
+                <div class="participant">
+                    <a type="button" class="highlight">设为主讲人</a>
+                    <span class="glyphicon glyphicon-volume-up volume"></span>
+                    <span class="glyphicon glyphicon-eye-open eye"></span>
+                </div>
+            </div>
+
+            <!-- 正在视频者列表 -->
+            <div class="chattingList col-md-2 fade-out-r">
+                <div class="user">
+                    <img :src="user0002.headImageUrl" alt="头像">
+                    <span>{{ user0002.name }}</span>
+                    <a class="audible" onclick="setStatus()"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
+                    <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </div>
+                <div class="user">
+                    <img :src="user0002.headImageUrl" alt="头像">
+                    <span>{{ user0003.name }}</span>
+                    <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
+                    <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </div>
+                <div class="user">
+                    <img :src="user0002.headImageUrl" alt="头像">
+                    <span>{{ user0004.name }}</span>
+                    <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
+                    <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </div>
+                <div class="user">
+                    <img :src="user0002.headImageUrl" alt="头像">
+                    <span>{{ user0005.name }}</span>
+                    <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
+                    <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </div>
+                <div class="user">
+                    <img :src="user0002.headImageUrl" alt="头像">
+                    <span>{{ user0006.name }}</span>
+                    <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
+                    <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </div>
+                <div class="user">
+                    <img :src="user0002.headImageUrl" alt="头像">
+                    <span>{{ user0006.name }}</span>
+                    <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
+                    <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </div>
+                <div class="user">
+                    <img :src="user0002.headImageUrl" alt="头像">
+                    <span>{{ user0006.name }}</span>
+                    <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
+                    <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </div>
+                <div class="user">
+                    <img :src="user0002.headImageUrl" alt="头像">
+                    <span>{{ user0006.name }}</span>
+                    <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
+                    <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </div>
+                <div class="user">
+                    <img :src="user0002.headImageUrl" alt="头像">
+                    <span>{{ user0006.name }}</span>
+                    <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
+                    <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--结束按钮-->
+    <div id="bottomBar">
+        <button type="button" id="hang-up">结束通话</button>
+        <span class="glyphicon glyphicon-volume-up"></span>
+        <span class="glyphicon glyphicon-eye-open"></span>
+    </div>
+</div>
+<!-- <script src="js/login.js"></script> -->
+<script src="js/chatting.js"></script>
+<script src="js/client.js"></script>
+</body>
+</html>
