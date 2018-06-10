@@ -6,7 +6,7 @@ var m=0;
 var mainStream;
 name = "";
 //当前要连接的用户姓名
-var connectedUser
+var connectedUser;
 //用于用户间连接的信道
 var yourConnection=new Array;
 //allstream存放所有的媒体流
@@ -22,8 +22,8 @@ var loginPage = document.querySelector('#login-page'),
     usernameInput = document.querySelector('#username'),
     loginButton = document.querySelector('#login'),
     callPage = document.querySelector('#call-page'),
-    buttonPage=document.querySelector('#button'),
-    changespeaker=document.querySelector('#changespeaker'),
+    //buttonPage=document.querySelector('#button'),
+    //changespeaker=document.querySelector('#changespeaker'),
     theirUsernameInput = document.querySelector('#their-username'),
     callButton = document.querySelector('#call'),
     hangUpButton = document.querySelector('#hang-up'),
@@ -115,7 +115,7 @@ function onLogin(success) {
     } else {
         loginPage.style.display = "none";
         callPage.style.display = "block";
-        buttonPage.style.display="block";
+        //buttonPage.style.display="block";
         //准备好通话通道
         startConnection();
     }
@@ -129,7 +129,7 @@ callButton.addEventListener("click", function () {
     if (theirUsername.length > 0) {
         //在已连接的用户数组中加入当前被呼叫人
         userArray.push(theirUsername);
-        changespeaker.style.display="block";
+        //changespeaker.style.display="block";
         startPeerConnection(theirUsername,allStreams[0]);
     }
 });
@@ -262,7 +262,7 @@ function onLeave(leaveName) {
            var movevideo=document.querySelector(m1);
            movevideo.srcObject=allStreams[j];
         }
-    }    
+    }
 }
 
 
@@ -394,12 +394,12 @@ function onDisconn(name)
         yourConnection[i].onicecandidate = null;
         yourConnection[i].onaddstream = null;
         yourConnection.splice(i,1);
-        
+
         for(var j=userArray.length;j>=i;j--){
             var m1="#windows"+j;
             var movevideo=document.querySelector(m1);
             movevideo.srcObject=allStreams[j];
-        }   
+        }
     }
 }
 

@@ -10,7 +10,7 @@ body,html{
 #login-page{
     height: 100%;
 }
-.container-fluid{
+#login-page .container-fluid{
     padding: 0;
     width: 100%;
     height: 100%;

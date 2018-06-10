@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/animation.css">
     <script src="js/vue.js"></script>
     <script src="js/userData.js"></script>
 </head>
@@ -27,7 +28,7 @@
                     <form action="#" method="post">
                         <input type="text" name="username" placeholder="账户名" id="username">
                         <input type="password" name="password" placeholder="密码" id="password">
-                        <input type="submit" value="登录" id="login">
+                        <button type="button" id="login">登录</button>
                     </form>
                 </div>
             </div>
@@ -140,12 +141,13 @@
             <!-- 会话主窗口 -->
             <div id="chamber">
                 <div class="participant main">
-                    <video id="windows0" autoplay></video>
+                    <video id="windows0" autoplay muted></video>
                     <a type="button" class="un-highlight">取消主讲人</a>
                     <span class="glyphicon glyphicon-volume-up volume"></span>
                     <span class="glyphicon glyphicon-eye-open eye"></span>
                 </div>
                 <div class="participant">
+                    <video id="windows1" autoplay muted></video>
                     <a type="button" class="highlight">设为主讲人</a>
                     <span class="glyphicon glyphicon-volume-up volume"></span>
                     <span class="glyphicon glyphicon-eye-open eye"></span>
@@ -253,10 +255,13 @@
         <button type="button" id="hang-up">结束通话</button>
         <span class="glyphicon glyphicon-volume-up"></span>
         <span class="glyphicon glyphicon-eye-open"></span>
+        <input type="text" id="their-username">
+        <button type="button" id="call">呼叫</button>
+        <button type="button" id="change">设置主讲人</button>
     </div>
 </div>
-<!-- <script src="js/login.js"></script> -->
+ <!--<script src="js/login.js"></script> -->
 <script src="js/chatting.js"></script>
-<script src="js/client.js"></script>
+<!--<script src="js/client.js"></script>-->
 </body>
 </html>

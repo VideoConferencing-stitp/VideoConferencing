@@ -3,6 +3,7 @@ div{overflow: hidden;}
 a{color: #fff;display: inline-block;}
 a:hover{color: #fff;text-decoration: none;cursor: pointer;}
 input{border: none;outline: none;}
+button{border:none;outline: none;}
 /*head*/
 #head{
     height: 60px;
@@ -109,6 +110,7 @@ h1{
     letter-spacing: 0;
     color: #fff;
     margin-top: 25px;
+    font-weight: 400;
 }
 .friendList .title{
     height: 78px;
