@@ -431,12 +431,13 @@ window.onload = function(){
         var newId="#windows"+total;
         console.log("i am the"+total);
         var theirVideo=document.querySelector(newId);
+        console.log(theirVideo);
         //向窗口中添加获得的对方媒体流
         if (theirVideo.srcObject !== e.streams[0]) {
             //将对方的流添加到allStream数组中
             allStreams.push(e.streams[0]);
             theirVideo.srcObject = e.streams[0];
-            console.log(e.streams[0]);
+            console.log("媒体流为"+e.streams[0]);
         }
     }
 
