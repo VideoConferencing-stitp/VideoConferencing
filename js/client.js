@@ -29,7 +29,7 @@ var loginPage = document.querySelector('#login-page'),
     hangUpButton = document.querySelector('#hang-up'),
     changeButton=document.querySelector('#change'),
     addButton=document.querySelector('#add');
-    callPage.style.display = "none";
+    // callPage.style.display = "none";
     //buttonPage.style.display="none";
     //changespeaker.style.display="none";
     //为登录按钮添加点击事件

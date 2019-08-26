@@ -126,6 +126,9 @@ input{
     height: 100%;
 }
 /*参与会话者*/
+#refresh{
+    float: right;
+}
 .participant{
     float: left;
     width: 230px;

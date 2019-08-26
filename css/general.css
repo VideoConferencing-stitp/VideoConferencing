@@ -150,8 +150,6 @@ h1{
 
 /*被选择者上方的红点*/
 .redDot{
-    /*width: 16px;*/
-    /*height: 16px;*/
     width: 0;
     height: 0;
     border-radius: 50%;

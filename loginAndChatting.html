@@ -45,7 +45,7 @@
 
 
 <!-- 会话界面 -->
-<div id="call-page" style="display:none;">
+<div id="call-page">
     <!-- 顶部 -->
     <div id="head" class="container-fluid">
         <div class="row">
@@ -68,6 +68,10 @@
                     <img id="stretchBtnR" src="images/icon/arrowl.svg" alt="缩放">
                 </a>
                 <span>状态列表</span>
+                <a id="refresh">
+                    <img src="images/refresh.png" alt="刷新">
+                    <!-- <child ref="list"></child> -->
+                </a>
             </div>
 
         </div>
@@ -87,108 +91,68 @@
                 <!-- 列表 -->
                 <div class="title">
                     <span>用户列表</span>
-                    <a><img src="images/add.png" alt="添加"></a>
+                    <a><img src="images/add.png" alt="add" id="addBtn"></a>
                 </div>
                 <div class="list">
-                    <div class="user friend" data-selected="false" onclick="choose()">
-                        <img :src="user0002.headImageUrl" alt="头像">
-                        <span>{{ user0002.name }}</span>
-                        <div class="redDot"></div>
-                    </div>
-                    <div class="user friend" data-selected="false">
-                        <img :src="user0002.headImageUrl" alt="头像">
-                        <span>{{ user0003.name }}</span>
-                        <div class="redDot"></div>
-                    </div>
-                    <div class="user friend" data-selected="false">
-                        <img :src="user0002.headImageUrl" alt="头像">
-                        <span>{{ user0004.name }}</span>
-                        <div class="redDot"></div>
-                    </div>
-                    <div class="user friend" data-selected="false">
-                        <img :src="user0002.headImageUrl" alt="头像">
-                        <span>{{ user0005.name }}</span>
-                        <div class="redDot"></div>
-                    </div>
-                    <div class="user friend" data-selected="false">
-                        <img :src="user0002.headImageUrl" alt="头像">
-                        <span>{{ user0006.name }}</span>
-                        <div class="redDot"></div>
-                    </div>
-                    <div class="user friend" data-selected="false">
-                        <img :src="user0002.headImageUrl" alt="头像">
-                        <span>{{ user0007.name }}</span>
-                        <div class="redDot"></div>
-                    </div>
-                    <div class="user friend" data-selected="false">
-                        <img :src="user0002.headImageUrl" alt="头像">
-                        <span>{{ user0008.name }}</span>
-                        <div class="redDot"></div>
-                    </div>
-                    <div class="user friend" data-selected="false">
-                        <img :src="user0002.headImageUrl" alt="头像">
-                        <span>{{ user0009.name }}</span>
-                        <div class="redDot"></div>
-                    </div>
-                    <div class="user friend" data-selected="false">
-                        <img :src="user0002.headImageUrl" alt="头像">
-                        <span>{{ user0010.name }}</span>
-                        <div class="redDot"></div>
+                    <div v-for="(user,index) in users" class="user friend" @click='handleOnclick(index)'>
+                            <img :src="user.headImageUrl" alt="头像">
+                            <span>{{ user.name }}</span>
+                            <div :class="{redDot: true, selected: user.isShow}"></div>
                     </div>
                 </div>
             </div>
 
             <!-- 会话主窗口 -->
             <div id="chamber">
-                <div class="participant main">
+                <div class="participant main" data-is-click="false">
                     <video id="windows0" autoplay muted></video>
                     <a type="button" class="un-highlight">取消主讲人</a>
                     <span class="glyphicon glyphicon-volume-up volume"></span>
                     <span class="glyphicon glyphicon-eye-open eye"></span>
                 </div>
-                <div class="participant">
+                <div class="participant" data-is-click="false">
                     <video id="windows1" autoplay muted></video>
                     <a type="button" class="highlight">设为主讲人</a>
                     <span class="glyphicon glyphicon-volume-up volume"></span>
                     <span class="glyphicon glyphicon-eye-open eye"></span>
                 </div>
-                <div class="participant">
+                <div class="participant" data-is-click="false">
                     <a type="button" class="highlight">设为主讲人</a>
                     <video id="windows2" autoplay muted></video>
                     <span class="glyphicon glyphicon-volume-up volume"></span>
                     <span class="glyphicon glyphicon-eye-open eye"></span>
                 </div>
-                <div class="participant">
+                <div class="participant" data-is-click="false">
                     <video id="windows3" autoplay muted></video>
                     <a type="button" class="highlight">设为主讲人</a>
                     <span class="glyphicon glyphicon-volume-up volume"></span>
                     <span class="glyphicon glyphicon-eye-open eye"></span>
                 </div>
-                <div class="participant">
+                <div class="participant" data-is-click="false">
                         <video id="windows4" autoplay muted></video>
                     <a type="button" class="highlight">设为主讲人</a>
                     <span class="glyphicon glyphicon-volume-up volume"></span>
                     <span class="glyphicon glyphicon-eye-open eye"></span>
                 </div>
-                <div class="participant">
+                <div class="participant" data-is-click="false">
                         <video id="windows5" autoplay muted></video>
                     <a type="button" class="highlight">设为主讲人</a>
                     <span class="glyphicon glyphicon-volume-up volume"></span>
                     <span class="glyphicon glyphicon-eye-open eye"></span>
                 </div>
-                <div class="participant">
+                <div class="participant" data-is-click="false">
                         <video id="windows6" autoplay muted></video>
                     <a type="button" class="highlight">设为主讲人</a>
                     <span class="glyphicon glyphicon-volume-up volume"></span>
                     <span class="glyphicon glyphicon-eye-open eye"></span>
                 </div>
-                <div class="participant">
+                <div class="participant" data-is-click="false">
                         <video id="windows7" autoplay muted></video>
                     <a type="button" class="highlight">设为主讲人</a>
                     <span class="glyphicon glyphicon-volume-up volume"></span>
                     <span class="glyphicon glyphicon-eye-open eye"></span>
                 </div>
-                <div class="participant">
+                <div class="participant" data-is-click="false">
                         <video id="windows8" autoplay muted></video>
                     <a type="button" class="highlight">设为主讲人</a>
                     <span class="glyphicon glyphicon-volume-up volume"></span>
@@ -199,61 +163,60 @@
             <!-- 正在视频者列表 -->
             <div class="chattingList col-md-2 fade-out-r">
                 <div class="user">
-                    <img :src="user0002.headImageUrl" alt="头像">
-                    <span>{{ user0002.name }}</span>
+                    <img :src="chatter0001.headImageUrl" alt="头像">
+                    <span>{{ chatter0001.name }}</span>
                     <a class="audible" onclick="setStatus()"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                     <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                 </div>
                 <div class="user">
-                    <img :src="user0002.headImageUrl" alt="头像">
-                    <span>{{ user0003.name }}</span>
+                    <img :src="chatter0001.headImageUrl" alt="头像">
+                    <span>{{ chatter0002.name }}</span>
                     <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                     <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                 </div>
                 <div class="user">
-                    <img :src="user0002.headImageUrl" alt="头像">
-                    <span>{{ user0004.name }}</span>
+                    <img :src="chatter0001.headImageUrl" alt="头像">
+                    <span>{{ chatter0003.name }}</span>
                     <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                     <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                 </div>
                 <div class="user">
-                    <img :src="user0002.headImageUrl" alt="头像">
-                    <span>{{ user0005.name }}</span>
+                    <img :src="chatter0001.headImageUrl" alt="头像">
+                    <span>{{ chatter0004.name }}</span>
                     <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                     <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                 </div>
                 <div class="user">
-                    <img :src="user0002.headImageUrl" alt="头像">
-                    <span>{{ user0006.name }}</span>
+                    <img :src="chatter0001.headImageUrl" alt="头像">
+                    <span>{{ chatter0005.name }}</span>
                     <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                     <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                 </div>
                 <div class="user">
-                    <img :src="user0002.headImageUrl" alt="头像">
-                    <span>{{ user0006.name }}</span>
+                    <img :src="chatter0001.headImageUrl" alt="头像">
+                    <span>{{ chatter0001.name }}</span>
                     <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                     <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                 </div>
                 <div class="user">
-                    <img :src="user0002.headImageUrl" alt="头像">
-                    <span>{{ user0006.name }}</span>
+                    <img :src="chatter0001.headImageUrl" alt="头像">
+                    <span>{{ chatter0001.name }}</span>
                     <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                     <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                 </div>
                 <div class="user">
-                    <img :src="user0002.headImageUrl" alt="头像">
-                    <span>{{ user0006.name }}</span>
+                    <img :src="chatter0001.headImageUrl" alt="头像">
+                    <span>{{ chatter0001.name }}</span>
                     <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                     <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                 </div>
                 <div class="user">
-                    <img :src="user0002.headImageUrl" alt="头像">
-                    <span>{{ user0006.name }}</span>
+                    <img :src="chatter0001.headImageUrl" alt="头像">
+                    <span>{{ chatter0001.name }}</span>
                     <a class="audible"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                     <a class="visible"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                 </div>
             </div>
-
         </div>
     </div>
 

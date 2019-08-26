@@ -78,7 +78,7 @@ function choose(){
     for(var i in selectedFriend){
 
         selectedFriend[i].onclick = function(){
-            if(this.dataset.selected === 'false'){
+            if(this.dataset.selected == 'false'){
                 //console.log(this.lastChild);
                 this.lastChild.classList.add('selected');
                 this.dataset.selected = 'true';
@@ -120,6 +120,7 @@ function setStatus(){
                 this.classList.add(eyeOpen);
                 this.style.color = '#28e0a4';
             }
+            event.stopPropagation();
         }
     }
 }
@@ -132,23 +133,8 @@ function videoWindowHover(){
 
     for(var i in video){
 
-        //鼠标移出时，按钮隐藏
-        video[i].onmouseleave = function(){
-
-            var a = this.getElementsByTagName('a')[0];
-            var volume = this.getElementsByClassName('volume')[0];
-            var eye = this.getElementsByClassName('eye')[0];
-
-            a.style.display = 'none';
-            volume.style.display = 'none';
-            eye.style.display = 'none';
-            flag = false;
-            //console.log(flag);
-        }
-    }
-
-    for(var i in video){
-        video[i].onmouseenter = function(){
+        //鼠标点击控制窗口显隐
+        video[i].onclick = function(){
 
             var a = this.getElementsByTagName('a')[0];
             var volume = this.getElementsByClassName('volume')[0];
@@ -156,26 +142,39 @@ function videoWindowHover(){
             var h = this.clientHeight;var w = this.clientWidth;
             var nowTop = -50;var nowLeft = -50;var nowRight = -50;
 
-            //鼠标移入时，按钮显示
-            var timer = setInterval((function(){
+            //若控制窗口当前隐藏，则点击一下显示
+            if (this.dataset.isClick == "false"){
 
-                if(nowTop < (h - 110)/2){
-                    a.style.display = 'block';
-                    a.style.top = nowTop + 'px';
-                    nowTop += 3;
-                }
-                if(nowLeft < (w - 140)/2){
-                    volume.style.display = 'block';
-                    volume.style.left = nowLeft + 'px';
-                    nowLeft += 3;
-                }
-                if(nowRight < ((w - 140)/2)){
-                    eye.style.display = 'block';
-                    eye.style.right = nowRight + 'px';
-                    nowRight += 3;
-                }
+                this.dataset.isClick = "true";
 
-            }), 1);
+                var timer = setInterval((function(){
+
+                    if(nowTop < (h - 110)/2){
+                        a.style.display = 'block';
+                        a.style.top = nowTop + 'px';
+                        nowTop += 3;
+                    }
+                    if(nowLeft < (w - 140)/2){
+                        volume.style.display = 'block';
+                        volume.style.left = nowLeft + 'px';
+                        nowLeft += 3;
+                    }
+                    if(nowRight < ((w - 140)/2)){
+                        eye.style.display = 'block';
+                        eye.style.right = nowRight + 'px';
+                        nowRight += 3;
+                    }
+                }), 1);
+            }
+            //若控制窗口当前显示，则点击一下隐藏
+            else{
+
+                this.dataset.isClick = "false";
+
+                a.style.display = 'none';
+                volume.style.display = 'none';
+                eye.style.display = 'none';
+            }
         };
     }
 }

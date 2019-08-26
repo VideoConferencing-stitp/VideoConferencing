@@ -9,16 +9,18 @@ window.onload = function(){
         return{
             headImageUrl: url,
             name: name,
-            id: id
+            id: id,
+            isShow: false
         }
     }
 
     //创建用户
-
+    var connection_flag = 0;
     var user0001 = User('images/user0001.jpg', 'user0001','0001');
-
+    var userList = new Array();
+    var userNum = 0;
+    
     //Vue实例
-
     var individual  = new Vue({
         el:'.individual',
         data:user0001
@@ -29,34 +31,98 @@ window.onload = function(){
     });
 
     //好友列表
+    // var refresh = new Vue({
+    //     el:'#refresh',
+    //     data:{
+    //     },
+    //     methods:{
+    //         refresh()
+    //         {
+    //             this.$refs.list.changeData();
+    //         }
+    //     }
+    // });
+
+
+
+
 
     var friend = new Vue({
         el:'.list',
         data:{
-            user0002:User('images/user0002.jpg', '一二三四五','0002'),
-            user0003:User('images/user0002.jpg', 'ABCDEFG','0003'),
-            user0004:User('images/user0002.jpg', 'abcdefghijkl','0004'),
-            user0005:User('images/user0002.jpg', '0123456789','0005'),
-            user0006:User('images/user0002.jpg', '!@#$%^&*()','0006'),
-            user0007:User('images/user0002.jpg', 'user0007','0007'),
-            user0008:User('images/user0002.jpg', 'user0008','0008'),
-            user0009:User('images/user0002.jpg', 'user0009','0009'),
-            user0010:User('images/user0002.jpg', 'user0010','0010')
+            users: [
+                User('images/user0002.jpg', '一二三四五','0002'),
+                User('images/user0002.jpg', 'ABCDEFG','0003'),
+                User('images/user0002.jpg', 'abcdefghijkl','0004'),
+                User('images/user0002.jpg', '0123456789','0005'),
+                User('images/user0002.jpg', '!@#$%^&*()','0006'),
+                User('images/user0002.jpg', 'user0007','0007'),
+                User('images/user0002.jpg', 'user0008','0008'),
+                User('images/user0002.jpg', 'user0009','0009'),
+                User('images/user0002.jpg', 'user0010','0010')
+            ],
+            showList: [] // 里面存放 boolean 值
+        },
+        methods:{
+            changeData()
+            {
+                console.log("changingDatalist");
+                if(userNum > 0){
+                    for(let i in this.users) {
+                        // 在这里更新 user 的值，并且可以动态刷新
+                        this.users[i].name = userList[i];
+                    }
+                }
+                
+            },
+            handleOnclick(index) {
+                console.log(index);
+                // 更新 class
+                this.users[index].isShow = this.users[index].isShow === false ? true: false;
+            },
+            updateShowList() {
+                this.showList.length = 0; // 更新前先清空
+                for(let user of this.users) {
+                    this.showList.push(user.isShow);
+                }
+            }
         }
     });
 
-    //正在视频用户
+    document.getElementById('addBtn').onclick = function() {
+        friend.updateShowList();
+        for(var i=0;i<10;i++)
+        {
+            if(friend.showList[i] && friend.users[i].name.length > 0)
+            {
+                userArray.push(friend.users[i].name);
+                startPeerConnection(friend.users[i].name,allStreams[0]);
+            }
+        }
+    }
+    
+    //外部调用Vue实例的方法
+    document.getElementById('refresh').onclick = function() {
+        console.log("requeasting userlist");
+        send({
+            type: "UserList",
+            name: userArray[0]
+        });
+    }
 
+    
+    //正在视频用户
     var chattingUser = new Vue({
         el:'.chattingList',
         data:{
-            user0002:User('images/user0002.jpg', '一二三四五','0002'),
-            user0003:User('images/user0002.jpg', 'ABCDEFG','0003'),
-            user0004:User('images/user0002.jpg', 'abcdefghijkl','0004'),
-            user0005:User('images/user0002.jpg', '0123456789','0005'),
-            user0006:User('images/user0002.jpg', '!@#$%^&*()','0006')
+            chatter0001:User('images/user0002.jpg', '一二三四五','0002'),
+            chatter0002:User('images/user0002.jpg', 'ABCDEFG','0003'),
+            chatter0003:User('images/user0002.jpg', 'abcdefghijkl','0004'),
+            chatter0004:User('images/user0002.jpg', '0123456789','0005'),
+            chatter0005:User('images/user0002.jpg', '!@#$%^&*()','0006')
         }
     });
+
     var Btn = new Vue({
         el: '.container-fluid',
         data:{
@@ -157,6 +223,10 @@ window.onload = function(){
                 console.log("disConnected from:"+ data.name);
                 onDisconn(data.name);
                 break;
+            case "userlist":
+                console.log("Receiving userlist");
+                onUserlist(data);
+                break;
             default:
                 break;
         }
@@ -176,6 +246,12 @@ window.onload = function(){
         connection.send(JSON.stringify(message));
     };
 
+    function onUserlist(data){
+        console.log("Changing Data");
+        userNum = data.usernum;
+        userList = data.usersL;
+        friend.changeData();
+    }
 
 //登录请求发出后，对服务器的回复进行处理
     function onLogin(success) {
@@ -203,7 +279,6 @@ window.onload = function(){
             startPeerConnection(theirUsername,allStreams[0]);
         }
     });
-
 
 //设置主讲人
     changeButton.addEventListener("click",function(event){
@@ -307,6 +382,18 @@ window.onload = function(){
         var i=userArray.length-2;
         yourConnection[i].addIceCandidate(new RTCIceCandidate(candidate));
     }
+
+    // function onCandidate(candidate,nextstep) {
+    //     connection_flag ++;
+    //     console.log("执行了onCandidate");
+    //     var i=userArray.length-2;
+    //     yourConnection[i].addIceCandidate(new RTCIceCandidate(candidate));
+    //     if(connection_flag == 2)
+    //     {
+    //         nextstep();
+    //         connection_flag = 0;
+    //     }
+    // }
 
 
 //和某人挂断
@@ -427,6 +514,7 @@ window.onload = function(){
 
 //获得远端媒体流
     function gotRemoteStream(e) {
+        connection_flag = true;
         var total=userArray.length-1;
         var newId="#windows"+total;
         console.log("i am the"+total);
